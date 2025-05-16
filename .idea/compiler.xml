@@ -2,27 +2,31 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
+      <profile default="true" name="Default" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+      </profile>
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="activityService" />
-      </profile>
-      <profile name="Annotation profile for userservice" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
-        </processorPath>
-        <module name="userservice" />
+        <module name="UserService" />
+        <module name="service-registry" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="orderService" target="17" />
+      <module name="servericeRegister" target="17" />
+      <module name="userservice" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="UserService" options="-parameters" />
       <module name="activityService" options="-parameters" />
+      <module name="orderService" options="-parameters" />
+      <module name="servericeRegister" options="-parameters" />
+      <module name="service-registry" options="-parameters" />
       <module name="userservice" options="-parameters" />
     </option>
   </component>

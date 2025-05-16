@@ -5,10 +5,35 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/gymdb
     username: postgres
-    password: postgres  # Ensure you provide the correct password or remove if not needed
-    driverClassName: org.postgresql.Driver
+    password: postgres  # Ensure you provide the correct password or use a secrets manager
+    driver-class-name: org.postgresql.Driver  # Use hyphens instead of camelCase
   jpa:
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
+  application:
+    name: user-service  # Use lowercase with hyphens for consistency
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
+
+logging:
+  level:
+    com.netflix.eureka: DEBUG
+    com.netflix.discovery: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus, metrics
+  metrics:
+    tags:
+      application: user-service
