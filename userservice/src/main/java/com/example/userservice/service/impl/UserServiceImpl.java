@@ -86,4 +86,9 @@ public class UserServiceImpl implements UserService {
         Optional<UserEntity> selectedUser=userRepo.findUserByEmail(email);
         return modelMapper.map(selectedUser,UserResponse.class);
     }
+
+    @Override
+    public Boolean exitByUserId(String userId) {
+        return userRepo.existsById(userId);
+    }
 }

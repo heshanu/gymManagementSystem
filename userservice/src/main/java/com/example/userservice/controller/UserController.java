@@ -60,4 +60,9 @@ public class UserController {
         UserResponse selectedUser = userService.deleteUser(userId);
         return new ResponseEntity<>(selectedUser,HttpStatus.ACCEPTED);
     }
+
+    @GetMapping("/{userId}/validate")
+    public ResponseEntity<Boolean> validateUser(@PathVariable String userId){
+        return new ResponseEntity<>(userService.exitByUserId(userId),HttpStatus.OK);
+    }
 }
