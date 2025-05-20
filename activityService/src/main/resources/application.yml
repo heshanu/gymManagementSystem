@@ -6,7 +6,7 @@ spring:
       connection-timeout: 5000
       socket-timeout: 3000
   application:
-    name: activity-service  # Use lowercase with hyphens for consistency
+    name: activity-service # Use lowercase with hyphens for consistency
 
 server:
   port: 8082
@@ -22,6 +22,8 @@ logging:
 
 eureka:
   client:
+    instance:
+      nonSecurePort: ${server.port}
     fetch-registry: true
     register-with-eureka: true
     service-url:

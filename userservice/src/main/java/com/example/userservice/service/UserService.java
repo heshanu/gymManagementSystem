@@ -15,4 +15,6 @@ public interface UserService {
     UserResponse deleteUser(String userId) throws Exception;
 
     UserResponse getUserByEmail(String email);
+    Boolean exitByUserId(String userId);
+
 }
