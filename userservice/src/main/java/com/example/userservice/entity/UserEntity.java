@@ -20,8 +20,7 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    public UserEntity() {
-    }
+
     @Column(nullable = false,unique = true)
     private String email;
 
