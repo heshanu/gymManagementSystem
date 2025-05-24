@@ -1,5 +1,4 @@
 package com.example.userservice.entity;
-
 import com.example.userservice.model.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
