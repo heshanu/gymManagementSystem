@@ -13,6 +13,15 @@
         <module name="UserService" />
         <module name="service-registry" />
       </profile>
+      <profile name="Annotation profile for aiService" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="aiService" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="orderService" target="17" />
@@ -24,6 +33,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="UserService" options="-parameters" />
       <module name="activityService" options="-parameters" />
+      <module name="aiService" options="-parameters" />
       <module name="orderService" options="-parameters" />
       <module name="servericeRegister" options="-parameters" />
       <module name="service-registry" options="-parameters" />
