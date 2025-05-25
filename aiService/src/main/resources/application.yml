@@ -1,0 +1,36 @@
+server:
+  port: 8083
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://heshanu97:test@cluster0.f6bnq.mongodb.net/fitnessrecommendation?retryWrites=true&w=majority&appName=Cluster0
+      auto-index-creation: true
+      connection-timeout: 5000
+      socket-timeout: 3000
+  application:
+    name: ai-service  # Use lowercase with hyphens for consistency
+
+eureka:
+  instance:
+    nonSecurePort: ${server.port}
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
+
+logging:
+  level:
+    com.netflix.eureka: DEBUG
+    com.netflix.discovery: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus, metrics
+  metrics:
+    tags:
+      application: ai-service
