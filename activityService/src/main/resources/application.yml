@@ -7,6 +7,17 @@ spring:
       socket-timeout: 3000
   application:
     name: activity-service # Use lowercase with hyphens for consistency
+  rabbitmq:
+    listener:
+      simple:
+        acknowledge-mode: manual
+        retry:
+          enabled: true
+          max-attempts: 3
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 server:
   port: 8082
@@ -19,6 +30,10 @@ logging:
     com.mongodb: INFO
     com.netflix.eureka: DEBUG
     com.netflix.discovery: DEBUG
+    org:
+      springframework:
+        amqp: DEBUG
+
 
 eureka:
   client:
@@ -29,3 +44,15 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
+rabbitmq:
+  exchange:
+    name: fitness.exchange
+  queue:
+    name: activity.queue
+  routing:
+    key: activity.tracking
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: prometheus

@@ -13,7 +13,7 @@ spring:
     hibernate:
       ddl-auto: update
   application:
-    name: user-service  # Use lowercase with hyphens for consistency
+    name: user-service
 
 eureka:
   instance:
@@ -35,6 +35,7 @@ management:
     web:
       exposure:
         include: health, prometheus, metrics
+        exclude: prometheus
   metrics:
     tags:
       application: user-service

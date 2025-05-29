@@ -5,12 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ActivityRequest {
+public class ActivityRequest implements Serializable {
     private String userId;
     private ActivityType activityType;
     private  Integer duration;
