@@ -14,12 +14,11 @@ public class WebClientConfig {
 
         return WebClient.builder();
     }
-
     @Bean
     public WebClient userServiceWebClient(WebClient.Builder webClientBuilder){
         return webClientBuilder
-                .baseUrl("http://userservice:8081")
+                .baseUrl("http://user-service:8081")
                 .build();
-    }
+}
 
 }

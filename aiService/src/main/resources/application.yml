@@ -9,7 +9,20 @@ spring:
       connection-timeout: 5000
       socket-timeout: 3000
   application:
-    name: ai-service  # Use lowercase with hyphens for consistency
+    name: ai-service
+  rabbitmq:
+    listener:
+      simple:
+        acknowledge-mode: manual
+        retry:
+          enabled: true
+          max-attempts: 3
+
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    # Use lowercase with hyphens for consistency
 
 eureka:
   instance:
@@ -30,7 +43,21 @@ management:
   endpoints:
     web:
       exposure:
-        include: health, prometheus, metrics
+        include: info,health, prometheus, metrics
+        exclude: prometheus
   metrics:
     tags:
       application: ai-service
+    enable:
+      rabbitmq: true
+  endpoint:
+    health:
+      show-details: always
+
+rabbitmq:
+  exchange:
+    name: fitness.exchange
+  queue:
+    name: activity.queue
+  routing:
+    key: activity.tracking

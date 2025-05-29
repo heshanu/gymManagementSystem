@@ -11,3 +11,10 @@ eureka:
 spring:
   application:
     name: SERVICE-REGISTERY
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus, metrics
+        exclude: prometheus
